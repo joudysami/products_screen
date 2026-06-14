@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:products/core/constant/app_colors.dart';
-import 'package:products/feature/auth/ui/widget/custom_fav_icon.dart';
-import 'package:products/feature/auth/ui/widget/custom_floatingbutton.dart';
+import 'package:products/feature/product/presentation/widgets/custom_fav_icon.dart';
+import 'package:products/feature/product/presentation/widgets/custom_floatingbutton.dart';
 
 class CustomContainer extends StatelessWidget {
   const CustomContainer({

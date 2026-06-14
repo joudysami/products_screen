@@ -8,8 +8,8 @@ class ApiClient {
   final Dio _dio = Dio(
     BaseOptions(
       baseUrl: AppEndpoints.baseurl,
-      connectTimeout: Duration(seconds: 5),
-      receiveTimeout: Duration(seconds: 3),
+      connectTimeout: Duration(seconds: 20),
+      receiveTimeout: Duration(seconds: 20),
     ),
   );
   static Dio get dio => _instance._dio;

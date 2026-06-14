@@ -1,21 +1,27 @@
-class Product {
-  int? id;
-  String? title;
-  double? price;
-  String? description;
-  String? category;
-  String? image;
-  Rating? rating;
+import 'package:products/feature/product/domain/entities/product_entity.dart';
+
+class Product extends ProductEntity {
+final String? category;
 
   Product({
-    this.id,
-    this.title,
-    this.price,
-    this.description,
+    super.id,
+    super.title,
+    super.price,
+    super.description,
     this.category,
-    this.image,
-    this.rating,
+    super.image,
+    super.rating,
   });
+   ProductEntity toEntity() {
+    return ProductEntity(
+      id: id,
+      title: title,
+      price: price,
+      description: description,
+      image: image,
+      rating: rating,
+    );
+  }
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
@@ -25,9 +31,9 @@ class Product {
       description: json['description'] as String?,
       category: json['category'] as String?,
       image: json['image'] as String?,
-      rating: json['rating'] != null 
-          ? Rating.fromJson(json['rating'] as Map<String, dynamic>) 
-          : null,
+      rating: json['rating'] != null
+    ? (json['rating']['rate'] as num?)?.toDouble()
+    : null,
     );
   }
 
@@ -39,7 +45,7 @@ class Product {
       'description': description,
       'category': category,
       'image': image,
-      'rating': rating?.toJson(),
+      'rating': rating,
     };
   }
 }

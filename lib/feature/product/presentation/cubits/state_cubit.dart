@@ -1,9 +1,9 @@
-import 'package:products/core/model/products/product.dart';
 import 'package:products/core/state/app_state.dart';
+import 'package:products/feature/product/domain/entities/product_entity.dart';
 
 class HomeState {
   final AppStatus getProducts;
-  final List<Product> products;
+  final List<ProductEntity> products;
 
   HomeState({
     required this.getProducts,
@@ -12,7 +12,7 @@ class HomeState {
 
   HomeState copyWith({
     AppStatus? getProducts,
-    List<Product>? products,
+    List<ProductEntity>? products,
   }) {
     return HomeState(
       getProducts: getProducts ?? this.getProducts,

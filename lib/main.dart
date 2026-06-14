@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:products/feature/Cubits/Home_Cubit/home_cubit.dart';
-import 'package:products/feature/auth/ui/screens/products_screen.dart';
-import 'package:provider/provider.dart';
-void main(){
-  runApp(Provider(
-    create: (context) => HomeCubit(),
-    child: MyApp()));
+import 'package:products/core/service/service_locator.dart';
+import 'package:products/feature/product/presentation/cubits/home_cubit.dart';
+import 'package:products/feature/product/presentation/screens/products_screen.dart';
+void main() {
+  setup();
+  runApp(   
+
+    BlocProvider(
+      create: (_) => getIt<HomeCubit>(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

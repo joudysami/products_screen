@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:products/core/constant/app_images.dart';
 import 'package:products/core/state/app_state.dart';
-import 'package:products/feature/Cubits/Home_Cubit/home_cubit.dart';
-import 'package:products/feature/Cubits/Home_Cubit/state_cubit.dart';
-import 'package:products/feature/auth/ui/widget/custom_container.dart';
+import 'package:products/feature/product/presentation/cubits/home_cubit.dart';
+import 'package:products/feature/product/presentation/cubits/state_cubit.dart';
+import 'package:products/feature/product/presentation/widgets/product_card.dart';
 
 class ProductsScreen extends StatefulWidget {
   const ProductsScreen({super.key});
@@ -15,11 +15,13 @@ class ProductsScreen extends StatefulWidget {
 }
 
 class _ProductsScreenState extends State<ProductsScreen> {
-  late final _homeCubit;
+  late final HomeCubit _homeCubit;
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
     _homeCubit = context.read<HomeCubit>();
     _homeCubit.getProducts();
+  });
     super.initState();
   }
 
@@ -31,16 +33,15 @@ class _ProductsScreenState extends State<ProductsScreen> {
           children: [
             Expanded(
               child: BlocBuilder<HomeCubit, HomeState>(
-                bloc: _homeCubit,
                 builder: (context, state) {
                   log("state:${state.getProducts}");
-                  if (state.getProducts == AppStatus.loading) {
+                  if (state.getProducts.isLoading) {
                     return const Center(child: CircularProgressIndicator());
                   }
-                  if (state.getProducts == AppStatus.error) {
+                  if (state.getProducts.isError) {
                     return const Center(child: Text("Something went wrong"));
                   }
-                  if (state.getProducts == AppStatus.success) {
+                  if (state.getProducts.isSuccess) {
                     final products = state.products;
 
                     return GridView.builder(
@@ -60,7 +61,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                           description: product.description ?? '',
 
                           price: product.price ?? 0.0,
-                          rating: product.rating?.rate ?? 0.0,
+                             rating: product.rating??0.0,
                         );
                       },
                     );
