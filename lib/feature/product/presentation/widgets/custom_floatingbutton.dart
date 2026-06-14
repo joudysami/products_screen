@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:products/core/constant/app_colors.dart';
 
 class CustomFloatingbutton extends StatelessWidget {
@@ -7,16 +8,16 @@ class CustomFloatingbutton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Container(
-    width: 30,
-    height: 30,
+    width: 30.w,
+    height: 30.h,
     decoration: BoxDecoration(
       color: AppColors.blue,
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(20.r),
     ),
-    child: const Icon(
+    child:  Icon(
       Icons.add,
       color: Colors.white,
-      size: 30,
+      size: 30.sp,
     ),
   );
   }

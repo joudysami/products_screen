@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:products/core/constant/app_colors.dart';
 import 'package:products/feature/product/presentation/widgets/custom_fav_icon.dart';
 import 'package:products/feature/product/presentation/widgets/custom_floatingbutton.dart';
@@ -22,14 +23,14 @@ class CustomContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding:  EdgeInsets.all(8.w),
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.white,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
           border: Border.all(
             color: AppColors.babyblue,
-            width: 2,
+            width: 2.w,
           ),
         ),
         child: Column(
@@ -38,29 +39,29 @@ class CustomContainer extends StatelessWidget {
             Stack(
               children: [
                 ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10),
+                  borderRadius:  BorderRadius.only(
+                    topLeft: Radius.circular(10.r),
+                    topRight: Radius.circular(10.r),
                   ),
                   child: Image.asset(
                     image,
                     width: double.infinity,
-                    height: 100,
+                    height: 100.h,
                     fit: BoxFit.cover,
                   ),
                 ),
-                const Positioned(
-                  top: 8,
-                  right: 8,
+                 Positioned(
+                  top: 8.h,
+                  right: 8.w,
                   child: CustomFavIcon(),
                 ),
               ],
             ),
 
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 8,
-                vertical: 6,
+              padding:  EdgeInsets.symmetric(
+                horizontal: 8.w,
+                vertical: 6.h,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,56 +71,56 @@ class CustomContainer extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.bold,
                       color: AppColors.darkblue,
                     ),
                   ),
 
-                  const SizedBox(height: 2),
+                   SizedBox(height: 2.h),
 
                   Text(
                     description,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      fontSize: 10,
+                      fontSize: 10.sp,
                       fontWeight: FontWeight.normal,
                       color: AppColors.darkblue,
                     ),
                   ),
 
-                  const SizedBox(height: 6),
+                   SizedBox(height: 6.h),
 
                   Row(
                     children: [
                       Text(
                         "EGP",
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 12.sp,
                           fontWeight: FontWeight.normal,
                           color: AppColors.darkblue,
                         ),
                       ),
 
-                      const SizedBox(width: 4),
+                       SizedBox(width: 4.w),
 
                       Text(
                         "$price",
                         
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 12.sp,
                           fontWeight: FontWeight.normal,
                           color: AppColors.darkblue,
                         ),
                       ),
 
-                      SizedBox(width: 40),
+                      SizedBox(width: 40.w),
 
                       Text(
                         "2000",
                         style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 10.sp,
                           fontWeight: FontWeight.w600,
                           color: AppColors.babyblue,
                           decoration: TextDecoration.lineThrough,
@@ -128,36 +129,36 @@ class CustomContainer extends StatelessWidget {
                     ],
                   ),
 
-                  const SizedBox(height: 6),
+                   SizedBox(height: 6.h),
 
                   Row(
                     children: [
                       Text(
                         "Review",
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 12.sp,
                           fontWeight: FontWeight.normal,
                           color: AppColors.darkblue,
                         ),
                       ),
 
-                      const SizedBox(width: 4),
+                       SizedBox(width: 4.w),
 
                       Text(
                         "($rating)",
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 12.sp,
                           fontWeight: FontWeight.normal,
                           color: AppColors.darkblue,
                         ),
                       ),
 
-                      const SizedBox(width: 3),
+                       SizedBox(width: 3.w),
 
                       Icon(
                         Icons.star,
                         color: AppColors.yellow,
-                        size: 20,
+                        size: 20.sp,
                       ),
 
                       const Spacer(),
