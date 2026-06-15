@@ -23,7 +23,9 @@ Future<void> getProducts() async {
   log("GET PRODUCTS ERROR: $e");
   log("STACK: $stack");
 
-  emit(state.copyWith(getProducts: AppStatus.error));
+  emit(state.copyWith(getProducts: AppStatus.error,
+  errorMessage: e.toString(),
+  ));
 }
 
 

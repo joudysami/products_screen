@@ -36,17 +36,17 @@ class _ProductsScreenState extends State<ProductsScreen> {
                 builder: (context, state) {
                   log("state:${state.getProducts}");
                   if (state.getProducts.isLoading) {
-                    return const Center(child: CircularProgressIndicator());
+                    return  Center(child: CircularProgressIndicator());
                   }
                   if (state.getProducts.isError) {
-                    return const Center(child: Text("Something went wrong"));
+                    return  Center(child: Text(state.errorMessage?? "Something went wrong",style: TextStyle(color:Colors.red),));
                   }
                   if (state.getProducts.isSuccess) {
                     final products = state.products;
 
                     return GridView.builder(
                       gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
+                           SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             crossAxisSpacing: 1,
                             mainAxisSpacing: 1,
