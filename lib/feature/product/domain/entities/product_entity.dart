@@ -3,14 +3,16 @@ class ProductEntity {
   final String? title;
   final double? price;
   final String? description;
-  final String? image;
+  final String? thumbnail;
   final double? rating;
+  final double? discountPercentage;
 
   const ProductEntity({
     this.id,
     this.title,
     this.price,
     this.description,
-    this.image, this.rating,
+    this.thumbnail,
+    this.rating, this.discountPercentage,
   });
 }

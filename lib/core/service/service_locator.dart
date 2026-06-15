@@ -7,10 +7,8 @@ import 'package:products/feature/product/presentation/cubits/home_cubit.dart';
 final getIt = GetIt.instance;
 
 void setup() {
-  getIt.registerLazySingleton(
-    () => ProductsDataSourceImpl(),
-  );
-getIt.registerLazySingleton<ProductRepoImpl>(
+  getIt.registerLazySingleton(() => ProductsDataSourceImpl());
+  getIt.registerLazySingleton<ProductRepoImpl>(
     () => ProductRepoImpl(getIt<ProductsDataSourceImpl>()),
   );
 

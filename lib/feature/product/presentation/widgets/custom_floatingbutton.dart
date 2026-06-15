@@ -7,18 +7,14 @@ class CustomFloatingbutton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-    width: 30.w,
-    height: 30.h,
-    decoration: BoxDecoration(
-      color: AppColors.blue,
-      borderRadius: BorderRadius.circular(20.r),
-    ),
-    child:  Icon(
-      Icons.add,
-      color: Colors.white,
-      size: 30.sp,
-    ),
-  );
+    return Container(
+      width: 30.w,
+      height: 30.h,
+      decoration: BoxDecoration(
+        color: AppColors.blue,
+        borderRadius: BorderRadius.circular(20.r),
+      ),
+      child: Icon(Icons.add, color: Colors.white, size: 30.sp),
+    );
   }
 }

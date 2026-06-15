@@ -8,19 +8,19 @@ class HomeState {
 
   HomeState({
     required this.getProducts,
-    required this.products, this.errorMessage,
-    
+    required this.products,
+    this.errorMessage,
   });
 
   HomeState copyWith({
     AppStatus? getProducts,
     List<ProductEntity>? products,
-      String? errorMessage,
+    String? errorMessage,
   }) {
     return HomeState(
       getProducts: getProducts ?? this.getProducts,
       products: products ?? this.products,
-      errorMessage:errorMessage
+      errorMessage: errorMessage,
     );
   }
 }

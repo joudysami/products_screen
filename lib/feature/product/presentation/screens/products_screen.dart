@@ -19,9 +19,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-    _homeCubit = context.read<HomeCubit>();
-    _homeCubit.getProducts();
-  });
+      _homeCubit = context.read<HomeCubit>();
+      _homeCubit.getProducts();
+    });
     super.initState();
   }
 
@@ -36,37 +36,41 @@ class _ProductsScreenState extends State<ProductsScreen> {
                 builder: (context, state) {
                   log("state:${state.getProducts}");
                   if (state.getProducts.isLoading) {
-                    return  Center(child: CircularProgressIndicator());
+                    return Center(child: CircularProgressIndicator());
                   }
                   if (state.getProducts.isError) {
-                    return  Center(child: Text(state.errorMessage?? "Something went wrong",style: TextStyle(color:Colors.red),));
+                    return Center(
+                      child: Text(
+                        state.errorMessage ?? "Something went wrong",
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    );
                   }
                   if (state.getProducts.isSuccess) {
                     final products = state.products;
 
                     return GridView.builder(
-                      gridDelegate:
-                           SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 1,
-                            mainAxisSpacing: 1,
-                            childAspectRatio: 0.8,
-                          ),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 1,
+                        mainAxisSpacing: 1,
+                        childAspectRatio: 0.8,
+                      ),
                       itemCount: products.length,
                       itemBuilder: (context, index) {
                         final product = products[index];
+                        log(product.thumbnail.toString());
                         return CustomContainer(
-                          image: product.image ?? AppImages.im,
+                          image: product.thumbnail ?? '',
                           title: product.title ?? '',
                           description: product.description ?? '',
-
+discount: product.discountPercentage??0.0,
                           price: product.price ?? 0.0,
-                             rating: product.rating??0.0,
+                          rating: product.rating ?? 0.0,
                         );
                       },
                     );
                   }
-                  
 
                   return const SizedBox();
                 },

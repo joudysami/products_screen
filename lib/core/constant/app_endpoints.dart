@@ -1,4 +1,4 @@
 class AppEndpoints {
-  static const  baseurl="https://fakestoreapi.com";
-    static const products = "/products";
+  static const baseurl = "https://dummyjson.com";
+  static const products = "/products";
 }
