@@ -1,8 +1,10 @@
 import 'dart:developer';
-import 'package:products/feature/product/Data/data_source/products_data_source.dart';
+import 'package:injectable/injectable.dart';
+import 'package:products/config/network/api_client.dart';
 import 'package:products/feature/product/Data/Model/product.dart';
-import 'package:products/core/network/api_client.dart';
+import 'package:products/feature/product/data/data_source/products_data_source.dart';
 
+@LazySingleton(as: ProductsDataSource)
 class ProductsDataSourceImpl implements ProductsDataSource {
   @override
   Future<List<Product>> getProducts() async {

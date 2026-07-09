@@ -1,5 +1,10 @@
+import 'package:json_annotation/json_annotation.dart';
 import 'package:products/feature/product/domain/entities/product_entity.dart';
 
+
+part 'product.g.dart';
+
+@JsonSerializable()
 class Product extends ProductEntity {
   final String? category;
 
@@ -11,8 +16,9 @@ class Product extends ProductEntity {
     this.category,
     super.thumbnail,
     super.rating,
-    super.discountPercentage
+    super.discountPercentage,
   });
+
   ProductEntity toEntity() {
     return ProductEntity(
       id: id,
@@ -21,53 +27,25 @@ class Product extends ProductEntity {
       description: description,
       thumbnail: thumbnail,
       rating: rating,
-      discountPercentage: discountPercentage
+      discountPercentage: discountPercentage,
     );
   }
 
-  factory Product.fromJson(Map<String, dynamic> json) {
-    return Product(
-      id: json['id'] as int?,
-      title: json['title'] as String?,
-      price: (json['price'] as num?)?.toDouble(),
-      description: json['description'] as String?,
-      category: json['category'] as String?,
-    thumbnail: json['thumbnail'] ??
-           (json['images'] != null && json['images'] is List
-              ? json['images'][0]
-              : null),
-      rating: (json['rating'] as num?)?.toDouble(),
-      discountPercentage: (json['discountPercentage'] as num?)?.toDouble());
-  }
+  factory Product.fromJson(Map<String, dynamic> json) =>
+      _$ProductFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'title': title,
-      'price': price,
-      'description': description,
-      'category': category,
-      'thumbnail': thumbnail,
-      'rating': rating,
-      'discountPercentage':discountPercentage
-    };
-  }
+  Map<String, dynamic> toJson() => _$ProductToJson(this);
 }
 
+@JsonSerializable()
 class Rating {
   double? rate;
   int? count;
 
   Rating({this.rate, this.count});
 
-  factory Rating.fromJson(Map<String, dynamic> json) {
-    return Rating(
-      rate: (json['rate'] as num?)?.toDouble(),
-      count: json['count'] as int?,
-    );
-  }
+  factory Rating.fromJson(Map<String, dynamic> json) =>
+      _$RatingFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    return {'rate': rate, 'count': count};
-  }
+  Map<String, dynamic> toJson() => _$RatingToJson(this);
 }

@@ -1,7 +1,10 @@
-import 'package:products/feature/product/Data/data_source/products_data_source.dart';
-import 'package:products/feature/product/Domain/Repo/product_repo.dart';
-import 'package:products/feature/product/domain/entities/product_entity.dart';
 
+import 'package:injectable/injectable.dart';
+import 'package:products/feature/product/data/data_source/products_data_source.dart';
+import 'package:products/feature/product/domain/entities/product_entity.dart';
+import 'package:products/feature/product/domain/repo/product_repo.dart';
+
+@LazySingleton(as: ProductRepo)
 class ProductRepoImpl implements ProductRepo {
   final ProductsDataSource _productsDataSource;
 
