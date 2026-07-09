@@ -1,9 +1,13 @@
+
 import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:products/core/state/app_state.dart';
-import 'package:products/feature/product/Domain/usecase/get_products.dart';
+import 'package:products/feature/product/domain/usecase/get_products.dart';
 import 'package:products/feature/product/presentation/cubits/state_cubit.dart';
 
+@injectable
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit(this._getProductsUseCase)
     : super(HomeState(getProducts: AppStatus.initial, products: []));

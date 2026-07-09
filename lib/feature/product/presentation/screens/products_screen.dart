@@ -1,7 +1,6 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:products/core/constant/app_images.dart';
 import 'package:products/core/state/app_state.dart';
 import 'package:products/feature/product/presentation/cubits/home_cubit.dart';
 import 'package:products/feature/product/presentation/cubits/state_cubit.dart';
